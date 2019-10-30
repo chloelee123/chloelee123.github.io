@@ -7,17 +7,20 @@ output:
 <span style = "font-size:30px;"> How to Modify Plot Legend in ggplot2 </span>
 
 # Part 1 - Set-up
-We firstly start with a original graph.
+We firstly start with an original graph. The data is The Western Collaborative Group Study (WCGS), a prospective cohort study, recruited middle-aged men(ages 39 to 59) who were employees of 10 California companies and collected data on 3154 individuals during the years 1960-1961. These subjects were primarily selected to study the relationship between behavior pattern and the risk of coronary heart disease (CHD). A number of other risk factors were also measured to provide the best possible assessment of the CHD risk associated with behavior type. Additional variables collected include age, height, weight, systolic blood pressure, diastolic blood pressure, cholesterol, smoking, and corneal arcus.
+"behpat" is behavioal pattern, A1, A2, B3, B4. "height" is the person's height in inches.
 ```{r}
+#Load data and packages
 library(ggplot2)
 library(readxl)
 wcgs<-readxl::read_xls("wcgs.xls")
+#Draw the original plot
 gp<-ggplot(data=wcgs,aes(x=behpat,y=height,fill=behpat))+geom_boxplot()
 gp
 ```
 
 # Part 2 - Removing the legend
-You can remove all the legends in a graph, using theme().
+You can remove all the legends in a graph, using theme(legend.position = "none").
 ```{r}
 #Remove all the legend
 gp+theme(legend.position = "none")
@@ -26,15 +29,16 @@ gp+theme(legend.position = "none")
 # Part 3 - Order of Items in the Legend
 
 ### [Changing the order of items in the legend]
-This changes the order of items to B3, B4, A1, A2.
-
+scale_fill_discrete can change the order of items to B3, B4, A1, A2.
+The order depends on what you want.
 ```{r}
 #change the order of items in the legend
 gp+scale_fill_discrete(breaks=c("B3", "B4","A1", "A2"))
 ```
 
 ### [Reversing the order of items in the legend]
-You can use scale_fill_discrete to reverse the legend order
+You can use scale_fill_discrete to reverse the legend order.
+If you set reverse=TRUE, then the order of items will be reversed.
 ```{r}
 #reverse the order of items in the legend
 gp+scale_fill_discrete(guide=guide_legend(reverse=TRUE))
@@ -43,21 +47,23 @@ gp+scale_fill_discrete(guide=guide_legend(reverse=TRUE))
 # Part 4 - Legend Title and Labels
 
 ### [Hiding the legend title]
-You can use theme() to hide the legend title.
+You can use theme() to hide the legend title, by setting legend.title to element_blank().
 ```{r}
 #hide the legend title
 gp+theme(legend.title = element_blank())
 ```
 
 ### [Modifying the appearance of legend title]
-You can use theme() to modify the appearance of legend title.
+You can use theme(legend.title=element_text()) to modify the appearance of legend title.
+The parameters include family(font family), face(font face), colour(text colour), size(text size in pts), hjust(horizontal justification in [0,1]), vjust(vertical justification in [0,1]), angle(angle in [0,360]), lineheight(line height), color(an alias for colour), margin(margins aroud the text), and debug(if TRUE, aids visual debugging by drawing a solid rectangle behind the complete text area, and a point where each label is anchored).
 ```{r}
 #modify the appearance of legend title
 gp + theme(legend.title = element_text(colour="red", size=10, face="bold"))
 ```
 
 ### [Modifying the appearance of legend labels]
-You can use theme() to modify the appearance of legend labels.
+You can use theme(legend.text) to modify the appearance of legend labels.
+The parameters in element_text are the same as the parameters discussed above.
 ```{r}
 #modify the appearance of legend labs
 gp + theme(legend.text = element_text(colour="red", size = 8, face = "bold"))
@@ -66,7 +72,7 @@ gp + theme(legend.text = element_text(colour="red", size = 8, face = "bold"))
 # Part 5 - Legend Box
 
 ### [Modifying the legend box]
-The default setting of legend will not have a box. You can add a box and modify its properties.
+The default setting of legend doese not have a box. You can add a box to the legend and modify its properties by using theme(legend.background = element_rect()). The parameters include fill(fill colour), colour(border colour), size(border size), linetype(border linetype), and color(an alias for colour).
 ```{r}
 #modify the legend box
 gp + theme(legend.background = element_rect(fill="gray90", size=.5, linetype="dotted"))
@@ -74,8 +80,8 @@ gp + theme(legend.background = element_rect(fill="gray90", size=.5, linetype="do
 
 # Part 6 - Legend Position
 ### [Changing the position of the legend]
-You can postion legend in different area of outside the plot by theme(). (left/right/top/bottom)
+You can postion legend in different areas of outside the plot by theme(). (left/right/top/bottom)
 ```{r}
-#change the position of the legend
+#change the position of the legend to top
 gp + theme(legend.position="top")
 ```

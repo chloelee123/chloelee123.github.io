@@ -383,17 +383,19 @@ div.tocify {
 <p><span style="font-size:30px;"> How to Modify Plot Legend in ggplot2 </span></p>
 <div id="part-1---set-up" class="section level1">
 <h1>Part 1 - Set-up</h1>
-<p>We firstly start with a original graph.</p>
-<pre class="r"><code>library(ggplot2)
+<p>We firstly start with an original graph. The data is The Western Collaborative Group Study (WCGS), a prospective cohort study, recruited middle-aged men(ages 39 to 59) who were employees of 10 California companies and collected data on 3154 individuals during the years 1960-1961. These subjects were primarily selected to study the relationship between behavior pattern and the risk of coronary heart disease (CHD). A number of other risk factors were also measured to provide the best possible assessment of the CHD risk associated with behavior type. Additional variables collected include age, height, weight, systolic blood pressure, diastolic blood pressure, cholesterol, smoking, and corneal arcus. “behpat” is behavioal pattern, A1, A2, B3, B4. “height” is the person’s height in inches.</p>
+<pre class="r"><code>#Load data and packages
+library(ggplot2)
 library(readxl)
 wcgs&lt;-readxl::read_xls(&quot;wcgs.xls&quot;)
+#Draw the original plot
 gp&lt;-ggplot(data=wcgs,aes(x=behpat,y=height,fill=behpat))+geom_boxplot()
 gp</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 </div>
 <div id="part-2---removing-the-legend" class="section level1">
 <h1>Part 2 - Removing the legend</h1>
-<p>You can remove all the legends in a graph, using theme().</p>
+<p>You can remove all the legends in a graph, using theme(legend.position = “none”).</p>
 <pre class="r"><code>#Remove all the legend
 gp+theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
@@ -402,14 +404,14 @@ gp+theme(legend.position = &quot;none&quot;)</code></pre>
 <h1>Part 3 - Order of Items in the Legend</h1>
 <div id="changing-the-order-of-items-in-the-legend" class="section level3">
 <h3>[Changing the order of items in the legend]</h3>
-<p>This changes the order of items to B3, B4, A1, A2.</p>
+<p>scale_fill_discrete can change the order of items to B3, B4, A1, A2. The order depends on what you want.</p>
 <pre class="r"><code>#change the order of items in the legend
 gp+scale_fill_discrete(breaks=c(&quot;B3&quot;, &quot;B4&quot;,&quot;A1&quot;, &quot;A2&quot;))</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="reversing-the-order-of-items-in-the-legend" class="section level3">
 <h3>[Reversing the order of items in the legend]</h3>
-<p>You can use scale_fill_discrete to reverse the legend order</p>
+<p>You can use scale_fill_discrete to reverse the legend order. If you set reverse=TRUE, then the order of items will be reversed.</p>
 <pre class="r"><code>#reverse the order of items in the legend
 gp+scale_fill_discrete(guide=guide_legend(reverse=TRUE))</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
@@ -419,21 +421,21 @@ gp+scale_fill_discrete(guide=guide_legend(reverse=TRUE))</code></pre>
 <h1>Part 4 - Legend Title and Labels</h1>
 <div id="hiding-the-legend-title" class="section level3">
 <h3>[Hiding the legend title]</h3>
-<p>You can use theme() to hide the legend title.</p>
+<p>You can use theme() to hide the legend title, by setting legend.title to element_blank().</p>
 <pre class="r"><code>#hide the legend title
 gp+theme(legend.title = element_blank())</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="modifying-the-appearance-of-legend-title" class="section level3">
 <h3>[Modifying the appearance of legend title]</h3>
-<p>You can use theme() to modify the appearance of legend title.</p>
+<p>You can use theme(legend.title=element_text()) to modify the appearance of legend title. The parameters include family(font family), face(font face), colour(text colour), size(text size in pts), hjust(horizontal justification in [0,1]), vjust(vertical justification in [0,1]), angle(angle in [0,360]), lineheight(line height), color(an alias for colour), margin(margins aroud the text), and debug(if TRUE, aids visual debugging by drawing a solid rectangle behind the complete text area, and a point where each label is anchored).</p>
 <pre class="r"><code>#modify the appearance of legend title
 gp + theme(legend.title = element_text(colour=&quot;red&quot;, size=10, face=&quot;bold&quot;))</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="modifying-the-appearance-of-legend-labels" class="section level3">
 <h3>[Modifying the appearance of legend labels]</h3>
-<p>You can use theme() to modify the appearance of legend labels.</p>
+<p>You can use theme(legend.text) to modify the appearance of legend labels. The parameters in element_text are the same as the parameters discussed above.</p>
 <pre class="r"><code>#modify the appearance of legend labs
 gp + theme(legend.text = element_text(colour=&quot;red&quot;, size = 8, face = &quot;bold&quot;))</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
@@ -443,7 +445,7 @@ gp + theme(legend.text = element_text(colour=&quot;red&quot;, size = 8, face = &
 <h1>Part 5 - Legend Box</h1>
 <div id="modifying-the-legend-box" class="section level3">
 <h3>[Modifying the legend box]</h3>
-<p>The default setting of legend will not have a box. You can add a box and modify its properties.</p>
+<p>The default setting of legend doese not have a box. You can add a box to the legend and modify its properties by using theme(legend.background = element_rect()). The parameters include fill(fill colour), colour(border colour), size(border size), linetype(border linetype), and color(an alias for colour).</p>
 <pre class="r"><code>#modify the legend box
 gp + theme(legend.background = element_rect(fill=&quot;gray90&quot;, size=.5, linetype=&quot;dotted&quot;))</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
@@ -453,8 +455,8 @@ gp + theme(legend.background = element_rect(fill=&quot;gray90&quot;, size=.5, li
 <h1>Part 6 - Legend Position</h1>
 <div id="changing-the-position-of-the-legend" class="section level3">
 <h3>[Changing the position of the legend]</h3>
-<p>You can postion legend in different area of outside the plot by theme(). (left/right/top/bottom)</p>
-<pre class="r"><code>#change the position of the legend
+<p>You can postion legend in different areas of outside the plot by theme(). (left/right/top/bottom)</p>
+<pre class="r"><code>#change the position of the legend to top
 gp + theme(legend.position=&quot;top&quot;)</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>

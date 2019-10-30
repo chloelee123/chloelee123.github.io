@@ -1,10 +1,11 @@
 ---
-title: "How to modify Plot Legend in ggplot2"
 output:
   html_document:
     toc: TRUE
     toc_float: TRUE
 ---
+<span style = "font-size:30px;"> How to Modify Plot Legend in ggplot2 </span>
+
 # Part 1 - Set-up
 We firstly start with a original graph.
 ```{r}
@@ -24,50 +25,57 @@ gp+theme(legend.position = "none")
 
 # Part 3 - Order of Items in the Legend
 
-## Changing the order of items in the legend
-This changes the order of items to B3,B4,A1,A2.
+### [Changing the order of items in the legend]
+This changes the order of items to B3, B4, A1, A2.
 
 ```{r}
+#change the order of items in the legend
 gp+scale_fill_discrete(breaks=c("B3", "B4","A1", "A2"))
 ```
 
-## Reversing the order of items in the legend
+### [Reversing the order of items in the legend]
 You can use scale_fill_discrete to reverse the legend order
 ```{r}
+#reverse the order of items in the legend
 gp+scale_fill_discrete(guide=guide_legend(reverse=TRUE))
 ```
 
 # Part 4 - Legend Title and Labels
 
-## Hiding the legend title
+### [Hiding the legend title]
 You can use theme() to hide the legend title.
 ```{r}
+#hide the legend title
 gp+theme(legend.title = element_blank())
 ```
 
-## Modifying the appearance of legend title
+### [Modifying the appearance of legend title]
 You can use theme() to modify the appearance of legend title.
 ```{r}
+#modify the appearance of legend title
 gp + theme(legend.title = element_text(colour="red", size=10, face="bold"))
 ```
 
-## Modifying the appearance of legend labels
+### [Modifying the appearance of legend labels]
 You can use theme() to modify the appearance of legend labels.
 ```{r}
+#modify the appearance of legend labs
 gp + theme(legend.text = element_text(colour="red", size = 8, face = "bold"))
 ```
 
 # Part 5 - Legend Box
 
-## Modifying the legend box
+### [Modifying the legend box]
 The default setting of legend will not have a box. You can add a box and modify its properties.
 ```{r}
+#modify the legend box
 gp + theme(legend.background = element_rect(fill="gray90", size=.5, linetype="dotted"))
 ```
 
 # Part 6 - Legend Position
-## Changing the position of the legend
+### [Changing the position of the legend]
 You can postion legend in different area of outside the plot by theme(). (left/right/top/bottom)
 ```{r}
+#change the position of the legend
 gp + theme(legend.position="top")
 ```

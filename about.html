@@ -12,7 +12,7 @@
 
 
 
-<title>How to modify Plot Legend in ggplot2</title>
+<title>about.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -376,11 +376,11 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">How to modify Plot Legend in ggplot2</h1>
 
 </div>
 
 
+<p><span style="font-size:30px;"> How to Modify Plot Legend in ggplot2 </span></p>
 <div id="part-1---set-up" class="section level1">
 <h1>Part 1 - Set-up</h1>
 <p>We firstly start with a original graph.</p>
@@ -400,55 +400,62 @@ gp+theme(legend.position = &quot;none&quot;)</code></pre>
 </div>
 <div id="part-3---order-of-items-in-the-legend" class="section level1">
 <h1>Part 3 - Order of Items in the Legend</h1>
-<div id="changing-the-order-of-items-in-the-legend" class="section level2">
-<h2>Changing the order of items in the legend</h2>
-<p>This changes the order of items to B3,B4,A1,A2.</p>
-<pre class="r"><code>gp+scale_fill_discrete(breaks=c(&quot;B3&quot;, &quot;B4&quot;,&quot;A1&quot;, &quot;A2&quot;))</code></pre>
+<div id="changing-the-order-of-items-in-the-legend" class="section level3">
+<h3>[Changing the order of items in the legend]</h3>
+<p>This changes the order of items to B3, B4, A1, A2.</p>
+<pre class="r"><code>#change the order of items in the legend
+gp+scale_fill_discrete(breaks=c(&quot;B3&quot;, &quot;B4&quot;,&quot;A1&quot;, &quot;A2&quot;))</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
-<div id="reversing-the-order-of-items-in-the-legend" class="section level2">
-<h2>Reversing the order of items in the legend</h2>
+<div id="reversing-the-order-of-items-in-the-legend" class="section level3">
+<h3>[Reversing the order of items in the legend]</h3>
 <p>You can use scale_fill_discrete to reverse the legend order</p>
-<pre class="r"><code>gp+scale_fill_discrete(guide=guide_legend(reverse=TRUE))</code></pre>
+<pre class="r"><code>#reverse the order of items in the legend
+gp+scale_fill_discrete(guide=guide_legend(reverse=TRUE))</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 </div>
 <div id="part-4---legend-title-and-labels" class="section level1">
 <h1>Part 4 - Legend Title and Labels</h1>
-<div id="hiding-the-legend-title" class="section level2">
-<h2>Hiding the legend title</h2>
+<div id="hiding-the-legend-title" class="section level3">
+<h3>[Hiding the legend title]</h3>
 <p>You can use theme() to hide the legend title.</p>
-<pre class="r"><code>gp+theme(legend.title = element_blank())</code></pre>
+<pre class="r"><code>#hide the legend title
+gp+theme(legend.title = element_blank())</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
-<div id="modifying-the-appearance-of-legend-title" class="section level2">
-<h2>Modifying the appearance of legend title</h2>
+<div id="modifying-the-appearance-of-legend-title" class="section level3">
+<h3>[Modifying the appearance of legend title]</h3>
 <p>You can use theme() to modify the appearance of legend title.</p>
-<pre class="r"><code>gp + theme(legend.title = element_text(colour=&quot;red&quot;, size=10, face=&quot;bold&quot;))</code></pre>
+<pre class="r"><code>#modify the appearance of legend title
+gp + theme(legend.title = element_text(colour=&quot;red&quot;, size=10, face=&quot;bold&quot;))</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
-<div id="modifying-the-appearance-of-legend-labels" class="section level2">
-<h2>Modifying the appearance of legend labels</h2>
+<div id="modifying-the-appearance-of-legend-labels" class="section level3">
+<h3>[Modifying the appearance of legend labels]</h3>
 <p>You can use theme() to modify the appearance of legend labels.</p>
-<pre class="r"><code>gp + theme(legend.text = element_text(colour=&quot;red&quot;, size = 8, face = &quot;bold&quot;))</code></pre>
+<pre class="r"><code>#modify the appearance of legend labs
+gp + theme(legend.text = element_text(colour=&quot;red&quot;, size = 8, face = &quot;bold&quot;))</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 </div>
 <div id="part-5---legend-box" class="section level1">
 <h1>Part 5 - Legend Box</h1>
-<div id="modifying-the-legend-box" class="section level2">
-<h2>Modifying the legend box</h2>
+<div id="modifying-the-legend-box" class="section level3">
+<h3>[Modifying the legend box]</h3>
 <p>The default setting of legend will not have a box. You can add a box and modify its properties.</p>
-<pre class="r"><code>gp + theme(legend.background = element_rect(fill=&quot;gray90&quot;, size=.5, linetype=&quot;dotted&quot;))</code></pre>
+<pre class="r"><code>#modify the legend box
+gp + theme(legend.background = element_rect(fill=&quot;gray90&quot;, size=.5, linetype=&quot;dotted&quot;))</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 </div>
 <div id="part-6---legend-position" class="section level1">
 <h1>Part 6 - Legend Position</h1>
-<div id="changing-the-position-of-the-legend" class="section level2">
-<h2>Changing the position of the legend</h2>
+<div id="changing-the-position-of-the-legend" class="section level3">
+<h3>[Changing the position of the legend]</h3>
 <p>You can postion legend in different area of outside the plot by theme(). (left/right/top/bottom)</p>
-<pre class="r"><code>gp + theme(legend.position=&quot;top&quot;)</code></pre>
+<pre class="r"><code>#change the position of the legend
+gp + theme(legend.position=&quot;top&quot;)</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 </div>

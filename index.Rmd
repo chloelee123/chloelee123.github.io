@@ -2,9 +2,15 @@
 title: "Zhuoer(Chloe) Li, B.A."
 ---
 
+
 <img src="headshot.jpg" style="width:30%; border:1px solid; margin-right: 5px" align="left">
-I am a Graduate candidate with major in the Biostatsitics and Data Science track of the Healthcare Policy and Research Department at [Weill Cornell Medicine](https://weill.cornell.edu/). I did my B.A. in Department of Mathematics and Statistics at [Boston University](http://www.bu.edu/). I worked as an intern for companies in different industries before, including Bank of Communications, Technical Consulting and Research, Inc, and PICC.
 
-I know several programming languages and software, including Python, R, Tableau, SQL, Java, C, Assembly, Processing, Arduino programming, and MATLAB.
+<span style = "font-size:15px;">
+I am a Graduate candidate with major in the Biostatsitics and Data Science track of the Healthcare Policy and Research Department at [Weill Cornell Medicine](https://weill.cornell.edu/). I did my B.A. in Department of Mathematics and Statistics at [Boston University](http://www.bu.edu/). I worked as an intern for companies in different industries before, including Bank of Communications, Technical Consulting and Research, Inc, and PICC. </span>
 
+<span style = "font-size:15px;">
+I know several programming languages and softwares, including Python, R, Tableau, SQL, Java, C, Assembly, Processing, Arduino programming, and MATLAB. </span>
+
+<span style = "font-size:15px;">
 My full CV is available [here](resume_zhuoerli.pdf).
+</span>

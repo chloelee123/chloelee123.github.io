@@ -1,0 +1,18 @@
+name: "Zhuoer Li
+"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    # Blog page teaches the webpage reader how to modify plot's legend with ggplot2
+    - text: "Blog"
+      href: about.html
+    # add email function to send email to me
+    - icon: fa-envelope fa-lg
+      href: mailto:<zhl4002@med.cornell.edu>
+    - icon: fa-github fa-lg # add github page
+      href: http://github.com/chloelee123/
+    - icon: fa-twitter fa-lg # add twitter page
+      href: https://twitter.com/ZhuoerLi1/
+output:
+  html_document

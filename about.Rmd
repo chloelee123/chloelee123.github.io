@@ -1,0 +1,73 @@
+---
+title: "How to modify Plot Legend in ggplot2"
+output:
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+---
+# Part 1 - Set-up
+We firstly start with a original graph.
+```{r}
+library(ggplot2)
+library(readxl)
+wcgs<-readxl::read_xls("wcgs.xls")
+gp<-ggplot(data=wcgs,aes(x=behpat,y=height,fill=behpat))+geom_boxplot()
+gp
+```
+
+# Part 2 - Removing the legend
+You can remove all the legends in a graph, using theme().
+```{r}
+#Remove all the legend
+gp+theme(legend.position = "none")
+```
+
+# Part 3 - Order of Items in the Legend
+
+## Changing the order of items in the legend
+This changes the order of items to B3,B4,A1,A2.
+
+```{r}
+gp+scale_fill_discrete(breaks=c("B3", "B4","A1", "A2"))
+```
+
+## Reversing the order of items in the legend
+You can use scale_fill_discrete to reverse the legend order
+```{r}
+gp+scale_fill_discrete(guide=guide_legend(reverse=TRUE))
+```
+
+# Part 4 - Legend Title and Labels
+
+## Hiding the legend title
+You can use theme() to hide the legend title.
+```{r}
+gp+theme(legend.title = element_blank())
+```
+
+## Modifying the appearance of legend title
+You can use theme() to modify the appearance of legend title.
+```{r}
+gp + theme(legend.title = element_text(colour="red", size=10, face="bold"))
+```
+
+## Modifying the appearance of legend labels
+You can use theme() to modify the appearance of legend labels.
+```{r}
+gp + theme(legend.text = element_text(colour="red", size = 8, face = "bold"))
+```
+
+# Part 5 - Legend Box
+
+## Modifying the legend box
+The default setting of legend will not have a box. You can add a box and modify its properties.
+```{r}
+gp + theme(legend.background = element_rect(fill="gray90", size=.5, linetype="dotted"))
+```
+
+# Part 6 - Legend Position
+## Changing the position of the legend
+You can postion legend in different area of outside the plot by theme(). (left/right/top/bottom)
+```{r}
+gp + theme(legend.position="top")
+```
